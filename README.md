@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NetPulse – Internet Speed & Network Stability Checker
 
 A complete, single-file full-stack computer networks diagnostic tool built for Computer Networks engineering coursework.
@@ -51,3 +52,7 @@ http://127.0.0.1:5000
 
 6. **Empirical A/B Verification (Before vs. After)**:
    - Stores baseline measurements and compares them against post-fix results with side-by-side metric diffs, color-coded indicators, and Chart.js bar graphs.
+=======
+# internet-speed-ai
+it is used for testing the seep of internet and compare them.
+>>>>>>> 8f8634be55c444f463175b7d0a282e1cb4c0f8cf
