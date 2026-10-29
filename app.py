@@ -2721,14 +2721,27 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 # ==============================================================================
 
 if __name__ == "__main__":
+    def find_open_port(preferred_port):
+        for p in [preferred_port, 5001, 8080, 5050]:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                try:
+                    s.bind(("127.0.0.1", p))
+                    return p
+                except OSError:
+                    continue
+        return preferred_port
+
+    target_port = int(os.environ.get("PORT", 5000))
+    port = find_open_port(target_port)
+
     # NetPulse banner
     print("\n" + "=" * 65)
     print("  NetPulse – Internet Speed & Network Stability Checker")
     print("  Computer Networks Engineering Project")
     print("=" * 65)
-    print("  Server running on http://127.0.0.1:5000")
+    print(f"  Server running on http://127.0.0.1:{port}")
     print("  Press Ctrl+C to terminate.")
     print("=" * 65 + "\n")
     
-    # Run the server on port 5000 with multithreading enabled
-    app.run(host="127.0.0.1", port=5000, debug=False, threaded=True)
+    # Run the server on selected port with multithreading enabled
+    app.run(host="127.0.0.1", port=port, debug=False, threaded=True)
